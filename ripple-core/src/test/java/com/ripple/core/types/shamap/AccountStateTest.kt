@@ -46,8 +46,8 @@ class AccountStateTest {
         val transactions = dump.get("transactions") as ArrayNode
         val tree = TransactionTree()
         transactions.forEach {
-            val obj = it as ObjectNode
-            obj["ledger_index"] = dump["ledger_index"]
+            val obj: ObjectNode = it as ObjectNode
+            obj.replace("ledger_index", dump["ledger_index"])
             val result = TransactionResult.fromJSON(obj)
             // TODO: Stopgap: This will exercise the API
             exerciseAPI(result)

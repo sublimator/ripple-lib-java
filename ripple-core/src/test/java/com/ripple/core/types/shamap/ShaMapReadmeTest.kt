@@ -57,7 +57,7 @@ class ShaMapReadmeTest {
         val tree = TransactionTree()
         transactions.forEach {
             val obj = it as ObjectNode
-            obj["ledger_index"] = dump["ledger_index"]
+            obj.replace("ledger_index", dump["ledger_index"])
             val result = TransactionResult.fromJSON(obj)
             tree.addTransactionResult(result)
         }
