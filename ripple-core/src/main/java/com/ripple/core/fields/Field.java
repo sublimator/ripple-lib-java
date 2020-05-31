@@ -12,6 +12,7 @@ public enum Field {
     LedgerEntryType(1, Type.UInt16),
     TransactionType(2, Type.UInt16),
     SignerWeight(3, Type.UInt16),
+    Version(16, Type.UInt16),
 
     Flags(2, Type.UInt32),
     SourceTag(3, Type.UInt32),
@@ -63,6 +64,7 @@ public enum Field {
     HighNode(8, Type.UInt64),
     DestinationNode(9, Type.UInt64),
     Cookie(10, Type.UInt64),
+    ServerVersion(11, Type.UInt64),
 
     EmailHash(1, Type.Hash128),
 
@@ -85,6 +87,7 @@ public enum Field {
     Channel(22, Type.Hash256),
     ConsensusHash(23, Type.Hash256),
     CheckID(24, Type.Hash256),
+    ValidatedHash(25, Type.Hash256),
 
     hash(257, Type.Hash256),
     index(258, Type.Hash256),
@@ -244,7 +247,7 @@ public enum Field {
     final Type type;
     private final byte[] bytes;
     public Object tag = null;
-    
+
     Field(int fid, Type tid) {
         id = fid;
         type = tid;
@@ -263,7 +266,7 @@ public enum Field {
     static public Field fromCode(Integer integer) {
         return byCode.get(integer);
     }
-    
+
     public Type getType() {
       return type;
     }

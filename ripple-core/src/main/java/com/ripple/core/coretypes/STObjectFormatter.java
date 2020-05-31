@@ -110,6 +110,9 @@ public class STObjectFormatter {
             case SetFee:
                 constructed = new SetFee();
                 break;
+            case AccountDelete:
+                constructed = new AccountDelete();
+                break;
         }
 
         constructed.fields = source.fields;

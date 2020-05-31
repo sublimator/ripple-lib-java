@@ -140,6 +140,7 @@ public class Hash256 extends Hash<Hash256> {
     static public Hash256Field CheckID = hash256Field(Field.CheckID);
     static public Hash256Field Digest = hash256Field(Field.Digest);
     static public Hash256Field ConsensusHash = hash256Field(Field.ConsensusHash);
+    static public Hash256Field ValidatedHash = hash256Field(Field.ValidatedHash);
 
     static public Hash256Field hash = hash256Field(Field.hash);
     static public Hash256Field index = hash256Field(Field.index);

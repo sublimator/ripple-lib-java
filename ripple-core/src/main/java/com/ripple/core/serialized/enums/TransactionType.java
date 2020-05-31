@@ -34,6 +34,7 @@ public enum TransactionType implements SerializedType {
     CheckCancel(18),
     DepositPreauth(19),
     TrustSet (20),
+    AccountDelete(21),
     EnableAmendment(100),
     SetFee(101);
 

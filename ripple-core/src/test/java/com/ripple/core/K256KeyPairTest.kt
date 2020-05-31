@@ -1,5 +1,6 @@
 package com.ripple.core
 
+import com.ripple.core.coretypes.AccountID
 import com.ripple.crypto.Seed
 import com.ripple.crypto.ecdsa.K256
 import com.ripple.crypto.ecdsa.K256KeyPair
@@ -17,6 +18,14 @@ class K256KeyPairTest {
     fun testVerify() {
         assertTrue(keyPair.verifyHash(TestFixtures.master_seed_bytes,
                 Hex.decode(TestFixtures.singed_master_seed_bytes)))
+    }
+
+    @Test
+    fun testDezuz() {
+        val kp = Seed.fromBase58("saNyQrVezXdAaXGeyTXTQasWFKGbV").keyPair()
+        val address = AccountID.fromKeyPair(kp)
+        val expected = "rEMZv3FvBeqRdHnCdpygPMMerN1mqAhQS2"
+        assertEquals(expected, address.toString())
     }
 
     @Test

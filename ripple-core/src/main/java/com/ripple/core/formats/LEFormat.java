@@ -190,6 +190,7 @@ public class LEFormat extends Format<LEFormat> {
             LedgerEntryType.PayChannel,
             Field.Account, Requirement.REQUIRED,
             Field.Destination, Requirement.REQUIRED,
+            Field.DestinationNode, Requirement.OPTIONAL,
             Field.Amount, Requirement.REQUIRED,
             Field.Balance, Requirement.REQUIRED,
             Field.PublicKey, Requirement.REQUIRED,

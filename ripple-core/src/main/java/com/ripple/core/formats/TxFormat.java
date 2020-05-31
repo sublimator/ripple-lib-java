@@ -205,6 +205,11 @@ public class TxFormat extends Format<TxFormat> {
             .required(Field.CheckID)
             ;
 
+    static public TxFormat AccountDelete = new TxFormat(TransactionType.AccountDelete)
+            .required(Field.Destination)
+            .optional(Field.DestinationTag)
+            ;
+
     static public TxFormat DepositPreauth = new TxFormat(TransactionType.DepositPreauth)
             .optional(Field.Authorize)
             .optional(Field.Unauthorize)

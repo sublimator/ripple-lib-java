@@ -78,6 +78,7 @@ public class UInt16 extends UInt<UInt16> {
     static public UInt16Field LedgerEntryType = int16Field(Field.LedgerEntryType);
     static public UInt16Field TransactionType = int16Field(Field.TransactionType);
     static public UInt16Field SignerWeight = int16Field(Field.SignerWeight);
+    static public UInt16Field Version = int16Field(Field.Version);
 
     @Override
     public Object toJSON() {

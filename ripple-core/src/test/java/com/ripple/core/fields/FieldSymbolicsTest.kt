@@ -64,6 +64,7 @@ class FieldSymbolicsTest {
             txs[TransactionType.EnableAmendment] = EnableAmendment::class.java
             txs[TransactionType.SetFee] = SetFee::class.java
             txs[TransactionType.DepositPreauth] = DepositPreauth::class.java
+            txs[TransactionType.AccountDelete] = AccountDelete::class.java
 
             for (tt in txs.keys) {
                 val aClass = txs[tt]!!
@@ -133,20 +134,27 @@ class FieldSymbolicsTest {
     private fun checkEngineResults(engineResults: JSONObject) {
         val keys = engineResults.keys()
         val results = HashMap<String, EngineResult>()
+        val declarations = TreeMap<Int, String>()
         for (r in EngineResult.values()) {
             results[r.name] = r
             assertTrue("No old codes", engineResults.has(r.name))
         }
+
         while (keys.hasNext()) {
             val key = keys.next() as String
             val resultObj = engineResults.getJSONObject(key)
             val ordinal = resultObj.getInt("ordinal")
             val description = resultObj.getString("description")
             val declaration = makeDeclarationLine(key, ordinal, description)
+            declarations[ordinal] = declaration
             assertTrue("missing " + declaration, results.containsKey(key))
             val ter = results[key]!!
             assertEquals(declaration, ter.asInteger().toLong(), ordinal.toLong())
             assertEquals(declaration, ter.human, description)
+        }
+
+        for (declaration in declarations.values) {
+            println(declaration)
         }
     }
 

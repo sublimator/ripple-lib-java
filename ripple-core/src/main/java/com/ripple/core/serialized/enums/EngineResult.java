@@ -21,11 +21,9 @@ public enum EngineResult implements SerializedType {
     telFAILED_PROCESSING("Failed to correctly process transaction."),
     telINSUF_FEE_P("Fee insufficient."),
     telNO_DST_PARTIAL("Partial payment to create account not allowed."),
-
     telCAN_NOT_QUEUE("Can not queue at this time."),
     telCAN_NOT_QUEUE_BALANCE("Can not queue at this time: insufficient balance to pay all queued fees."),
     telCAN_NOT_QUEUE_BLOCKS("Can not queue at this time: would block later queued transaction(s)."),
-
     telCAN_NOT_QUEUE_BLOCKED("Can not queue at this time: blocking transaction in queue."),
     telCAN_NOT_QUEUE_FEE("Can not queue at this time: fee insufficient to replace queued transaction."),
     telCAN_NOT_QUEUE_FULL("Can not queue at this time: queue is full."),
@@ -40,6 +38,7 @@ public enum EngineResult implements SerializedType {
     temBAD_OFFER("Malformed: Bad offer."),
     temBAD_PATH("Malformed: Bad path."),
     temBAD_PATH_LOOP("Malformed: Loop in path."),
+    temBAD_REGKEY("Malformed: Regular key cannot be same as master key."),
     temBAD_SEND_XRP_LIMIT("Malformed: Limit quality is not allowed for XRP to XRP."),
     temBAD_SEND_XRP_MAX("Malformed: Send max is not allowed for XRP to XRP."),
     temBAD_SEND_XRP_NO_DIRECT("Malformed: No Ripple direct is not allowed for XRP to XRP."),
@@ -63,7 +62,7 @@ public enum EngineResult implements SerializedType {
     temINVALID_ACCOUNT_ID("Malformed: A field contains an invalid account ID."),
     temCANNOT_PREAUTH_SELF("Malformed: An account may not preauthorize itself."),
     temUNCERTAIN("In process of determining result. Never returned."),
-    temUNKNOWN(-266, "The transaction requires logic that is not implemented yet."),
+    temUNKNOWN("The transaction requires logic that is not implemented yet."),
 
     tefFAILURE(-199, "Failed to apply."),
     tefALREADY("The exact transaction was already in this ledger."),
@@ -83,9 +82,7 @@ public enum EngineResult implements SerializedType {
     tefNOT_MULTI_SIGNING("Account has no appropriate list of multi-signers."),
     tefBAD_AUTH_MASTER("Auth for unclaimed account needs correct master key."),
     tefINVARIANT_FAILED("Fee claim violated invariants for the transaction."),
-
-
-
+    tefTOO_BIG("Transaction affects too many items."),
 
     terRETRY(-99, "Retry transaction."),
     terFUNDS_SPENT("Can't set password, password set funds already spent."),
@@ -137,6 +134,8 @@ public enum EngineResult implements SerializedType {
     tecEXPIRED(148, "Expiration time is passed."),
     tecDUPLICATE(149, "Ledger object already exists."),
     tecKILLED(150, "FillOrKill offer killed."),
+    tecHAS_OBLIGATIONS(151, "The account cannot be deleted since it has obligations."),
+    tecTOO_SOON(152, "It is too early to attempt the requested operation. Please wait.")
     ;
 
 

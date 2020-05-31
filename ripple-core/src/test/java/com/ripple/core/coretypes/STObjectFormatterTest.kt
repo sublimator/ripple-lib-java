@@ -38,6 +38,7 @@ class STObjectFormatterTest {
         TransactionType.values().forEach { tt ->
             val so = STObject()
             so.put(Field.TransactionType, tt)
+            println("$tt")
             val txSo = STObjectFormatter.format(so)
             assertTrue(txSo is Transaction)
             assertEquals(tt.toString(), txSo.javaClass.simpleName)
