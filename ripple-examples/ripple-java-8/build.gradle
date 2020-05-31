@@ -12,7 +12,7 @@ dependencies {
     compile project(':ripple-client')
     compile project(':ripple-client-java-websocket-transport')
 
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.13'
     testCompile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 buildscript {
