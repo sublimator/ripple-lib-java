@@ -11,7 +11,7 @@ targetCompatibility = 1.8
 dependencies {
     compile 'net.i2p.crypto:eddsa:0.3.0'
     compile 'org.bouncycastle:bcprov-jdk15on:1.65.01'
-    compile 'org.json:json:20171018'
+    compile 'org.json:json:20200518'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.9.3'
     testCompile 'junit:junit:4.13'
     testCompile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
