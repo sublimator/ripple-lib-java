@@ -1,5 +1,4 @@
 The Ripple Java Library [![CircleCI](https://circleci.com/gh/sublimator/ripple-lib-java.svg?style=svg)](https://circleci.com/gh/sublimator/ripple-lib-java) [![codecov](https://codecov.io/gh/sublimator/ripple-lib-java/branch/master/graph/badge.svg)](https://codecov.io/gh/sublimator/ripple-lib-java) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=sublimator/ripple-lib-java)](https://dependabot.com)
-
 ===============
 
 # THIS LIBRARY HAS NOT BEEN USED IN PRODUCTION FOR PROCESSING REAL MONEY. DO NOT USE UNLESS YOU KNOW WHAT YOU ARE DOING.
