@@ -109,6 +109,8 @@ public class UInt32 extends UInt<UInt32> {
     public static UInt32Field CancelAfter = int32Field(Field.CancelAfter);
     public static UInt32Field FinishAfter = int32Field(Field.FinishAfter);
     public static UInt32Field SettleDelay = int32Field(Field.SettleDelay);
+    public static UInt32Field TicketSequence = int32Field(Field.TicketSequence);
+    public static UInt32Field TicketCount = int32Field(Field.TicketCount);
 
     @Override
     public Object toJSON() {

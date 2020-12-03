@@ -42,6 +42,7 @@ class FieldSymbolicsTest {
             les[LedgerEntryType.SignerList] = SignerList::class.java
             les[LedgerEntryType.PayChannel] = PayChannel::class.java
             les[LedgerEntryType.DepositPreauth] = DepositPreauthLe::class.java
+            les[LedgerEntryType.NegativeUNL] = NegativeUNL::class.java
 
             txs[TransactionType.Payment] = Payment::class.java
             txs[TransactionType.CheckCreate] = CheckCreate::class.java
@@ -52,7 +53,6 @@ class FieldSymbolicsTest {
             txs[TransactionType.TrustSet] = TrustSet::class.java
             txs[TransactionType.OfferCancel] = OfferCancel::class.java
             txs[TransactionType.OfferCreate] = OfferCreate::class.java
-            txs[TransactionType.TicketCancel] = TicketCancel::class.java
             txs[TransactionType.TicketCreate] = TicketCreate::class.java
             txs[TransactionType.EscrowCancel] = EscrowCancel::class.java
             txs[TransactionType.EscrowCreate] = EscrowCreate::class.java
@@ -65,6 +65,7 @@ class FieldSymbolicsTest {
             txs[TransactionType.SetFee] = SetFee::class.java
             txs[TransactionType.DepositPreauth] = DepositPreauth::class.java
             txs[TransactionType.AccountDelete] = AccountDelete::class.java
+            txs[TransactionType.UNLModify] = UNLModify::class.java
 
             for (tt in txs.keys) {
                 val aClass = txs[tt]!!
@@ -147,15 +148,16 @@ class FieldSymbolicsTest {
             val description = resultObj.getString("description")
             val declaration = makeDeclarationLine(key, ordinal, description)
             declarations[ordinal] = declaration
+            // continue
             assertTrue("missing " + declaration, results.containsKey(key))
             val ter = results[key]!!
             assertEquals(declaration, ter.asInteger().toLong(), ordinal.toLong())
             assertEquals(declaration, ter.human, description)
         }
 
-        for (declaration in declarations.values) {
-            println(declaration)
-        }
+//        for (declaration in declarations.values) {
+//            println(declaration)
+//        }
     }
 
     private fun makeDeclarationLine(key: String, ordinal: Int, description: String): String {
@@ -169,9 +171,12 @@ class FieldSymbolicsTest {
     }
 
     private fun checkTransactionTypes(txns: JSONArray) {
+        val txNames = TreeSet<String>()
+
         for (i in 0 until txns.length()) {
             val tx = txns.getJSONObject(i)
             val txName = tx.getString("name")
+            txNames.add(txName)
             val ordinal = tx.getInt("ordinal")
 
             try {
@@ -213,13 +218,17 @@ class FieldSymbolicsTest {
                     FieldSymbolicsTest.txs.containsKey(TransactionType.valueOf(txName)))
         }
 
+        for (it in TransactionType.values()) {
+            assertTrue("surplus txn type ${it.name}", txNames.contains(it.name))
+        }
+
         assertEquals(txns.length().toLong(),
                 TransactionType.values().size.toLong())
 
     }
 
     private fun checkMethods(txFormat: Format<*>, requirements: EnumMap<Field, Format.Requirement>, kls: Class<*>) {
-        // println("Methods for: " + kls.simpleName)
+        println("Methods for: " + kls.simpleName)
         var missing = false
         for (field in requirements.keys) {
             val requirement = requirements[field]
@@ -283,16 +292,19 @@ class FieldSymbolicsTest {
         }
         val requirements = format.requirements()
         val fields = obj.getJSONArray("fields")
+        val fieldNames = TreeSet<String>()
 
         for (j in 0 until fields.length()) {
             val field = fields.getJSONArray(j)
             val fieldName = field.getString(0)
+            fieldNames.add(fieldName)
+
             val requirement = field.getString(1)
 
             val key = Field.fromString(fieldName)
             if (!requirements.containsKey(key)) {
-                fail(String.format("%s format missing %s %s %n",
-                        txName, requirement, fieldName))
+                fail(String.format("%s format missing %s %s %n %s",
+                        txName, requirement, fieldName, obj.toString(2)))
             } else {
                 val req = requirements[key]
                 if (req.toString() != requirement) {
@@ -302,6 +314,11 @@ class FieldSymbolicsTest {
                 }
             }
         }
+        for (j in requirements.entries) {
+            val fieldName = j.key.toString()
+            assertFalse("$txName has surplus key $fieldName", !fieldNames.contains(fieldName))
+        }
+
         // check length is same, and if none are missing, must be equal ;)
         assertEquals(obj.toString(2),
                 fields.length().toLong(), requirements.size.toLong())
@@ -344,7 +361,7 @@ class FieldSymbolicsTest {
                 checkFormat(entryJson, format)
 
                 val key = LedgerEntryType.valueOf(name)
-                assertTrue(FieldSymbolicsTest.les.containsKey(key))
+                assertTrue("missing LE impl for $key", FieldSymbolicsTest.les.containsKey(key))
                 val kls = FieldSymbolicsTest.les[key]!!
                 // System.out.println("Methods for: " + txName);
 

@@ -22,4 +22,7 @@ public class OfferCreate extends Transaction {
     public boolean hasExpiration() {return has(UInt32.Expiration);}
     public boolean hasOfferSequence() {return has(UInt32.OfferSequence);}
 
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

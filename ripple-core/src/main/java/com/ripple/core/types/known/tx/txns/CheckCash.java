@@ -2,6 +2,7 @@ package com.ripple.core.types.known.tx.txns;
 
 import com.ripple.core.coretypes.Amount;
 import com.ripple.core.coretypes.hash.Hash256;
+import com.ripple.core.coretypes.uint.UInt32;
 import com.ripple.core.serialized.enums.TransactionType;
 import com.ripple.core.types.known.tx.Transaction;
 
@@ -20,4 +21,8 @@ public class CheckCash extends Transaction {
     public void checkID(Hash256 val) { put(Hash256.CheckID, val);}
     public void amount(Amount val) { put(Amount.Amount, val);}
     public void deliverMin(Amount val) { put(Amount.DeliverMin, val);}
+
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

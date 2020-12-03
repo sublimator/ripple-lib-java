@@ -20,5 +20,8 @@ public class PaymentChannelFund extends Transaction {
     public void channel(Hash256 val) { put(Hash256.Channel, val);}
     public void amount(Amount val) { put(Amount.Amount, val);}
 
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }
 

@@ -61,6 +61,7 @@ public enum EngineResult implements SerializedType {
     temBAD_TICK_SIZE("Malformed: Tick size out of range."),
     temINVALID_ACCOUNT_ID("Malformed: A field contains an invalid account ID."),
     temCANNOT_PREAUTH_SELF("Malformed: An account may not preauthorize itself."),
+    temINVALID_COUNT("Malformed: Count field outside valid range."),
     temUNCERTAIN("In process of determining result. Never returned."),
     temUNKNOWN("The transaction requires logic that is not implemented yet."),
 
@@ -83,24 +84,25 @@ public enum EngineResult implements SerializedType {
     tefBAD_AUTH_MASTER("Auth for unclaimed account needs correct master key."),
     tefINVARIANT_FAILED("Fee claim violated invariants for the transaction."),
     tefTOO_BIG("Transaction affects too many items."),
+    tefNO_TICKET("Ticket is not in ledger."),
 
     terRETRY(-99, "Retry transaction."),
-    terFUNDS_SPENT("Can't set password, password set funds already spent."),
+    terFUNDS_SPENT("DEPRECATED."),
     terINSUF_FEE_B("Account balance can't pay fee."),
     terNO_ACCOUNT("The source account does not exist."),
     terNO_AUTH("Not authorized to hold IOUs."),
     terNO_LINE("No such line."),
     terOWNERS("Non-zero owner count."),
     terPRE_SEQ("Missing/inapplicable prior transaction."),
-    terLAST("Process last."),
+    terLAST("DEPRECATED."),
     terNO_RIPPLE("Path does not permit rippling."),
     terQUEUED("Held until escalated fee drops."),
+    terPRE_TICKET("Ticket is not yet in ledger."),
 
     tesSUCCESS(0, "The transaction was applied. Only final in a validated ledger."),
-
     tecCLAIM(100, "Fee claimed. Sequence used. No action."),
     tecPATH_PARTIAL(101, "Path could not send full amount."),
-    tecUNFUNDED_ADD(102, "Insufficient XRP balance for WalletAdd."),
+    tecUNFUNDED_ADD(102, "DEPRECATED."),
     tecUNFUNDED_OFFER(103, "Insufficient balance to fund created offer."),
     tecUNFUNDED_PAYMENT(104, "Insufficient XRP balance to send."),
     tecFAILED_PROCESSING(105, "Failed to correctly process transaction."),
@@ -112,7 +114,7 @@ public enum EngineResult implements SerializedType {
     tecNO_LINE_INSUF_RESERVE(126, "No such line. Too little reserve to create it."),
     tecNO_LINE_REDUNDANT(127, "Can't set non-existent line to default."),
     tecPATH_DRY(128, "Path could not send partial amount."),
-    tecUNFUNDED(129, "One of _ADD, _OFFER, or _SEND. Deprecated."),
+    tecUNFUNDED(129, "Not enough XRP to satisfy the reserve requirement."),
     tecNO_ALTERNATIVE_KEY(130, "The operation would remove the ability to sign transactions with the account."),
     tecNO_REGULAR_KEY(131, "Regular key is not set."),
     tecOWNERS(132, "Non-zero owner count."),
@@ -135,7 +137,7 @@ public enum EngineResult implements SerializedType {
     tecDUPLICATE(149, "Ledger object already exists."),
     tecKILLED(150, "FillOrKill offer killed."),
     tecHAS_OBLIGATIONS(151, "The account cannot be deleted since it has obligations."),
-    tecTOO_SOON(152, "It is too early to attempt the requested operation. Please wait.")
+    tecTOO_SOON(152, "It is too early to attempt the requested operation. Please wait."),
     ;
 
 

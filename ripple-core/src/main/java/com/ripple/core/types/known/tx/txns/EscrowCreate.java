@@ -15,6 +15,7 @@ public class EscrowCreate extends Transaction {
     public boolean hasCancelAfter() {return has(UInt32.CancelAfter);}
     public boolean hasFinishAfter() {return has(UInt32.FinishAfter);}
     public boolean hasCondition() {return has(Blob.Condition);}
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
 
     public Amount amount() {return get(Amount.Amount);}
     public AccountID destination() {return get(AccountID.Destination);}
@@ -22,6 +23,7 @@ public class EscrowCreate extends Transaction {
     public UInt32 cancelAfter() {return get(UInt32.CancelAfter);}
     public UInt32 finishAfter() {return get(UInt32.FinishAfter);}
     public Blob condition() {return get(Blob.Condition);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
 
     public void destinationTag(UInt32 val) { put(UInt32.DestinationTag, val);}
     public void cancelAfter(UInt32 val) { put(UInt32.CancelAfter, val);}
@@ -29,5 +31,5 @@ public class EscrowCreate extends Transaction {
     public void amount(Amount val) { put(Amount.Amount, val);}
     public void condition(Blob val) { put(Blob.Condition, val);}
     public void destination(AccountID val) { put(AccountID.Destination, val);}
-
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

@@ -24,7 +24,7 @@ public enum TransactionType implements SerializedType {
     OfferCancel (8),
     // unused2(9),
     TicketCreate(10),
-    TicketCancel(11),
+    // TicketCancel(11),
     SignerListSet(12),
     PaymentChannelCreate(13),
     PaymentChannelFund(14),
@@ -36,7 +36,8 @@ public enum TransactionType implements SerializedType {
     TrustSet (20),
     AccountDelete(21),
     EnableAmendment(100),
-    SetFee(101);
+    SetFee(101),
+    UNLModify(102);
 
     public int asInteger() {
         return ord;

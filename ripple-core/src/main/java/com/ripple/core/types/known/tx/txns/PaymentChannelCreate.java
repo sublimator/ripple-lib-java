@@ -29,4 +29,7 @@ public class PaymentChannelCreate extends Transaction {
     public Blob publicKey() {return get(Blob.PublicKey);}
     public AccountID destination() {return get(AccountID.Destination);}
 
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

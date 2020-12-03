@@ -61,6 +61,10 @@ public class AccountRoot extends ThreadedLedgerEntry {
     public void accountTxnID(Hash256 val) { put(Hash256.AccountTxnID, val);}
     public void tickSize(UInt8 val) { put(UInt8.TickSize, val);}
 
+    public boolean hasTicketCount() {return has(UInt32.TicketCount);}
+    public UInt32 ticketCount() {return get(UInt32.TicketCount);}
+    public void ticketCount(UInt32 val) { put(UInt32.TicketCount, val);}
+
     @Override
     public void setDefaults() {
         super.setDefaults();

@@ -22,7 +22,7 @@ public class AccountSet extends Transaction{
     public Blob messageKey() {return get(Blob.MessageKey);}
     public Blob domain() {return get(Blob.Domain);}
     public UInt8 tickSize() {return get(UInt8.TickSize);}
-
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
     public void transferRate(UInt32 val) {put(Field.TransferRate, val);}
     public void walletSize(UInt32 val) {put(Field.WalletSize, val);}
     public void setFlag(UInt32 val) {put(Field.SetFlag, val);}
@@ -32,6 +32,7 @@ public class AccountSet extends Transaction{
     public void messageKey(Blob val) {put(Field.MessageKey, val);}
     public void domain(Blob val) {put(Field.Domain, val);}
     public void tickSize(UInt8 val) { put(UInt8.TickSize, val);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
 
     public boolean hasTransferRate() {return has(UInt32.TransferRate);}
     public boolean hasWalletSize() {return has(UInt32.WalletSize);}
@@ -42,5 +43,5 @@ public class AccountSet extends Transaction{
     public boolean hasMessageKey() {return has(Blob.MessageKey);}
     public boolean hasDomain() {return has(Blob.Domain);}
     public boolean hasTickSize() {return has(UInt8.TickSize);}
-
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

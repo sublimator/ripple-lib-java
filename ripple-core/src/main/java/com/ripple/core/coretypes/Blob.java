@@ -116,4 +116,7 @@ public class Blob implements SerializedType {
     static public BlobField MemoFormat = blobField(Field.MemoFormat);
     static public BlobField Condition = blobField(Field.Condition);
     static public BlobField Fulfillment = blobField(Field.Fulfillment);
+    static public BlobField UNLModifyValidator = blobField(Field.UNLModifyValidator);
+    static public BlobField ValidatorToDisable = blobField(Field.ValidatorToDisable);
+    static public BlobField ValidatorToReEnable = blobField(Field.ValidatorToReEnable);
 }

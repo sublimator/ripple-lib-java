@@ -27,4 +27,8 @@ public class CheckCreate extends Transaction {
     public UInt32 destinationTag() {return get(UInt32.DestinationTag);}
     public Hash256 invoiceID() {return get(Hash256.InvoiceID);}
     public Amount sendMax() {return get(Amount.SendMax);}
+
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

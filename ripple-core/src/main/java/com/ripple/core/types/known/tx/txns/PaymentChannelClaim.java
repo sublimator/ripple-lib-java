@@ -3,6 +3,7 @@ package com.ripple.core.types.known.tx.txns;
 import com.ripple.core.coretypes.Amount;
 import com.ripple.core.coretypes.Blob;
 import com.ripple.core.coretypes.hash.Hash256;
+import com.ripple.core.coretypes.uint.UInt32;
 import com.ripple.core.serialized.enums.TransactionType;
 import com.ripple.core.types.known.tx.Transaction;
 
@@ -28,4 +29,7 @@ public class PaymentChannelClaim extends Transaction {
     public Blob publicKey() {return get(Blob.PublicKey);}
     public Blob signature() {return get(Blob.Signature);}
 
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

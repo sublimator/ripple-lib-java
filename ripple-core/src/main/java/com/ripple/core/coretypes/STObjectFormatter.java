@@ -74,9 +74,6 @@ public class STObjectFormatter {
             case TicketCreate:
                 constructed = new TicketCreate();
                 break;
-            case TicketCancel:
-                constructed = new TicketCancel();
-                break;
             case SignerListSet:
                 constructed = new SignerListSet();
                 break;
@@ -112,6 +109,9 @@ public class STObjectFormatter {
                 break;
             case AccountDelete:
                 constructed = new AccountDelete();
+                break;
+            case UNLModify:
+                constructed = new UNLModify();
                 break;
         }
 
