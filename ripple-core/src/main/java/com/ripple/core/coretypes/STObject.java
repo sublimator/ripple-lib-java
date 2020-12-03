@@ -428,6 +428,7 @@ public class STObject implements SerializedType, Iterable<Field> {
     static public STObjectField ObjectEndMarker = stobjectField(Field.ObjectEndMarker);
     static public STObjectField Memo = stobjectField(Field.Memo);
     static public STObjectField Majority = stobjectField(Field.Majority);
+    static public STObjectField DisabledValidator = stobjectField(Field.DisabledValidator);
 
     private static class Translators {
         @SuppressWarnings("unused")
