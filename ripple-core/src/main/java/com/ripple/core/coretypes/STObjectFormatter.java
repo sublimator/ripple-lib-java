@@ -163,6 +163,9 @@ public class STObjectFormatter {
             case Check:
                 constructed = new Check();
                 break;
+            case NegativeUNL:
+                constructed = new NegativeUNL();
+                break;
             case DepositPreauth:
                 constructed = new DepositPreauthLe();
                 break;
