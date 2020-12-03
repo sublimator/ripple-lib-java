@@ -15,7 +15,7 @@ dependencies {
     testCompile 'junit:junit:4.13.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.12.0"
 }
 
