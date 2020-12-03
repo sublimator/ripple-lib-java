@@ -79,7 +79,8 @@ public class LEFormat extends Format<LEFormat> {
             Field.MessageKey,          Requirement.OPTIONAL,
             Field.TransferRate,        Requirement.OPTIONAL,
             Field.Domain,              Requirement.OPTIONAL,
-            Field.TickSize,            Requirement.OPTIONAL
+            Field.TickSize,            Requirement.OPTIONAL,
+            Field.TicketCount,         Requirement.OPTIONAL
     );
 
     public static LEFormat DirectoryNode = new LEFormat(
@@ -114,10 +115,10 @@ public class LEFormat extends Format<LEFormat> {
     public static LEFormat Ticket = new LEFormat(
             LedgerEntryType.Ticket,
             Field.Account,             Requirement.REQUIRED,
-            Field.Sequence,            Requirement.REQUIRED,
             Field.OwnerNode,           Requirement.REQUIRED,
-            Field.Target,              Requirement.OPTIONAL,
-            Field.Expiration,          Requirement.OPTIONAL
+            Field.TicketSequence,      Requirement.REQUIRED,
+            Field.PreviousTxnID,       Requirement.REQUIRED,
+            Field.PreviousTxnLgrSeq,   Requirement.REQUIRED
     );
 
     public static LEFormat RippleState = new LEFormat(
@@ -228,4 +229,9 @@ public class LEFormat extends Format<LEFormat> {
             .required(Field.PreviousTxnLgrSeq)
             ;
 
+    public static LEFormat NegativeUNL = new LEFormat(LedgerEntryType.NegativeUNL)
+            .optional(Field.DisabledValidators)
+            .optional(Field.ValidatorToDisable)
+            .optional(Field.ValidatorToReEnable)
+            ;
 }

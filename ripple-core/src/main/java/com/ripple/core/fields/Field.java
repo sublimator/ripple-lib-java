@@ -53,6 +53,8 @@ public enum Field {
     FinishAfter(37, Type.UInt32),
     SignerListID(38, Type.UInt32),
     SettleDelay(39, Type.UInt32),
+    TicketCount(40, Type.UInt32),
+    TicketSequence(41, Type.UInt32),
 
     IndexNext(1, Type.UInt64),
     IndexPrevious(2, Type.UInt64),
@@ -82,7 +84,7 @@ public enum Field {
     InvoiceID(17, Type.Hash256),
     Nickname(18, Type.Hash256),
     Amendment(19, Type.Hash256),
-    TicketID(20, Type.Hash256),
+    // TicketID(20, Type.Hash256),
     Digest(21, Type.Hash256),
     Channel(22, Type.Hash256),
     ConsensusHash(23, Type.Hash256),
@@ -128,6 +130,9 @@ public enum Field {
     Fulfillment(16, Type.Blob),
     Condition(17, Type.Blob),
     MasterSignature(18, Type.Blob),
+    UNLModifyValidator(19, Type.Blob),
+    ValidatorToDisable(20, Type.Blob),
+    ValidatorToReEnable(21, Type.Blob),
 
     Account(1, Type.AccountID),
     Owner(2, Type.AccountID),
@@ -135,7 +140,7 @@ public enum Field {
     Issuer(4, Type.AccountID),
     Authorize(5, Type.AccountID),
     Unauthorize(6, Type.AccountID),
-    Target(7, Type.AccountID),
+//    Target(7, Type.AccountID),
     RegularKey(8, Type.AccountID),
 
     ObjectEndMarker(1, Type.STObject),
@@ -153,6 +158,7 @@ public enum Field {
     Signer(16, Type.STObject),
     // 17 unused
     Majority(18, Type.STObject),
+    DisabledValidator(19, Type.STObject),
 
     ArrayEndMarker(1, Type.STArray),
 //    SigningAccounts(2, Type.STArray),
@@ -164,11 +170,13 @@ public enum Field {
     AffectedNodes(8, Type.STArray),
     Memos(9, Type.STArray),
     Majorities(16, Type.STArray),
+    DisabledValidators(17, Type.STArray),
 
     CloseResolution(1, Type.UInt8),
     Method(2, Type.UInt8),
     TransactionResult(3, Type.UInt8),
     TickSize(16, Type.UInt8),
+    UNLModifyDisabling(17, Type.UInt8),
 
     TakerPaysCurrency(1, Type.Hash160),
     TakerPaysIssuer(2, Type.Hash160),

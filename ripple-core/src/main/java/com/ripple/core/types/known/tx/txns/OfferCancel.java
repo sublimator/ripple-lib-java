@@ -10,4 +10,8 @@ public class OfferCancel extends Transaction {
     }
     public UInt32 offerSequence() {return get(UInt32.OfferSequence);}
     public void offerSequence(UInt32 val) { put(UInt32.OfferSequence, val);}
+
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

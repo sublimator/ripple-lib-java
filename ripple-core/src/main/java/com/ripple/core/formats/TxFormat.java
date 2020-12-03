@@ -23,7 +23,6 @@ public class TxFormat extends Format<TxFormat> {
         common.put(Field.LastLedgerSequence,  Requirement.OPTIONAL);
         common.put(Field.Memos,               Requirement.OPTIONAL);
         common.put(Field.Signers,             Requirement.OPTIONAL);
-
     }
     public final TransactionType transactionType;
 
@@ -79,16 +78,19 @@ public class TxFormat extends Format<TxFormat> {
                 .optional(Field.TransferRate)
                 .optional(Field.SetFlag)
                 .optional(Field.TickSize)
-                .optional(Field.ClearFlag);
+                .optional(Field.ClearFlag)
+                .optional(Field.TicketSequence);
 
     static public TxFormat TrustSet = new TxFormat(
             TransactionType.TrustSet,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.LimitAmount,     Requirement.OPTIONAL,
             Field.QualityIn,       Requirement.OPTIONAL,
             Field.QualityOut,      Requirement.OPTIONAL);
 
     static public TxFormat OfferCreate = new TxFormat(
             TransactionType.OfferCreate,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.TakerPays,       Requirement.REQUIRED,
             Field.TakerGets,       Requirement.REQUIRED,
             Field.Expiration,      Requirement.OPTIONAL,
@@ -96,23 +98,24 @@ public class TxFormat extends Format<TxFormat> {
 
     static public TxFormat OfferCancel = new TxFormat(
             TransactionType.OfferCancel,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.OfferSequence,   Requirement.REQUIRED);
 
     static public TxFormat TicketCreate = new TxFormat(
             TransactionType.TicketCreate,
-            Field.Target,     Requirement.OPTIONAL,
-            Field.Expiration, Requirement.OPTIONAL);
-
-    static public TxFormat TicketCancel = new TxFormat(
-            TransactionType.TicketCancel,
-            Field.TicketID,   Requirement.REQUIRED);
+            Field.TicketSequence,
+            Requirement.OPTIONAL,
+            Field.TicketCount,
+            Requirement.REQUIRED);
 
     static public TxFormat SetRegularKey = new TxFormat(
             TransactionType.SetRegularKey,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.RegularKey,  Requirement.OPTIONAL);
 
     static public TxFormat Payment = new TxFormat(
             TransactionType.Payment,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Destination,     Requirement.REQUIRED,
             Field.Amount,          Requirement.REQUIRED,
             Field.SendMax,         Requirement.OPTIONAL,
@@ -125,6 +128,7 @@ public class TxFormat extends Format<TxFormat> {
 
     static public TxFormat EscrowCreate = new TxFormat(
             TransactionType.EscrowCreate,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Destination,      Requirement.REQUIRED,
             Field.Amount,           Requirement.REQUIRED,
             Field.Condition,        Requirement.OPTIONAL,
@@ -134,6 +138,7 @@ public class TxFormat extends Format<TxFormat> {
 
     static public TxFormat EscrowFinish = new TxFormat(
             TransactionType.EscrowFinish,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Owner,            Requirement.REQUIRED,
             Field.OfferSequence,    Requirement.REQUIRED,
             Field.Fulfillment,      Requirement.OPTIONAL,
@@ -141,6 +146,7 @@ public class TxFormat extends Format<TxFormat> {
 
     static public TxFormat EscrowCancel = new TxFormat(
             TransactionType.EscrowCancel,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Owner,          Requirement.REQUIRED,
             Field.OfferSequence,  Requirement.REQUIRED);
 
@@ -160,11 +166,13 @@ public class TxFormat extends Format<TxFormat> {
 
     static public TxFormat SignerListSet = new TxFormat(
             TransactionType.SignerListSet,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.SignerQuorum,              Requirement.REQUIRED,
             Field.SignerEntries,              Requirement.OPTIONAL
     );
     static public TxFormat PaymentChannelCreate = new TxFormat(
             TransactionType.PaymentChannelCreate,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Destination,              Requirement.REQUIRED,
             Field.Amount,              Requirement.REQUIRED,
             Field.SettleDelay,              Requirement.REQUIRED,
@@ -174,12 +182,14 @@ public class TxFormat extends Format<TxFormat> {
     );
     static public TxFormat PaymentChannelFund = new TxFormat(
             TransactionType.PaymentChannelFund,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Channel,              Requirement.REQUIRED,
             Field.Amount,              Requirement.REQUIRED,
             Field.Expiration,              Requirement.OPTIONAL
     );
     static public TxFormat PaymentChannelClaim = new TxFormat(
             TransactionType.PaymentChannelClaim,
+            Field.TicketSequence , Requirement.OPTIONAL,
             Field.Channel,              Requirement.REQUIRED,
             Field.Amount,              Requirement.OPTIONAL,
             Field.Balance,              Requirement.OPTIONAL,
@@ -193,25 +203,36 @@ public class TxFormat extends Format<TxFormat> {
             .optional(Field.Expiration)
             .optional(Field.DestinationTag)
             .optional(Field.InvoiceID)
+            .optional(Field.TicketSequence)
             ;
 
     static public TxFormat CheckCash = new TxFormat(TransactionType.CheckCash)
             .required(Field.CheckID)
             .optional(Field.Amount)
             .optional(Field.DeliverMin)
+            .optional(Field.TicketSequence)
             ;
 
     static public TxFormat CheckCancel = new TxFormat(TransactionType.CheckCancel)
             .required(Field.CheckID)
+            .optional(Field.TicketSequence)
             ;
 
     static public TxFormat AccountDelete = new TxFormat(TransactionType.AccountDelete)
             .required(Field.Destination)
             .optional(Field.DestinationTag)
+            .optional(Field.TicketSequence)
             ;
 
     static public TxFormat DepositPreauth = new TxFormat(TransactionType.DepositPreauth)
             .optional(Field.Authorize)
             .optional(Field.Unauthorize)
+            .optional(Field.TicketSequence)
+            ;
+
+    static public TxFormat UNLModify = new TxFormat(TransactionType.UNLModify)
+            .required(Field.UNLModifyDisabling)
+            .required(Field.LedgerSequence)
+            .required(Field.UNLModifyValidator)
             ;
 }

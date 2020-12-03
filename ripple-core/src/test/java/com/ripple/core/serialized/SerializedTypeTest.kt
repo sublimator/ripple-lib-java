@@ -11,17 +11,17 @@ class SerializedTypeTest {
     @Test
     fun testStaticMemberConformity() {
         val loader = javaClass.classLoader
-        Arrays.stream(Type.values()).filter({ it.id in 1..255 }).forEach { type ->
+        Arrays.stream(Type.values()).filter { it.id in 1..255 }.forEach { type ->
             var pkg = "com.ripple.core.coretypes"
             val typeName = type.toString()
 
-            arrayListOf("hash", "uint").forEach({
+            arrayListOf("hash", "uint").forEach {
                 if (typeName.toLowerCase().startsWith(it)) {
-                    pkg += ("." + it)
+                    pkg += (".$it")
                 }
-            })
+            }
 
-            val klassName = pkg + "." + type
+            val klassName = "$pkg.$type"
             val klass = getClass(loader, klassName)
 
             // These will throw if they are missing!
@@ -30,7 +30,7 @@ class SerializedTypeTest {
             klass.getDeclaredMethod("fromBytes", ByteArray::class.java)
 
             Arrays.stream(Field.values())
-                  .filter({it.type == type}).forEach { field ->
+                  .filter { it.type == type }.forEach { field ->
                 try {
                     val declaredField = klass.getDeclaredField(field.toString())
                     val get = declaredField.get(null) as HasField

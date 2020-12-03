@@ -14,4 +14,9 @@ public class AccountDelete extends Transaction{
     public void destinationTag(UInt32 val) { put(UInt32.DestinationTag, val);}
     public AccountID destination() {return get(AccountID.Destination);}
     public void destination(AccountID val) { put(AccountID.Destination, val);}
+
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
+
 }

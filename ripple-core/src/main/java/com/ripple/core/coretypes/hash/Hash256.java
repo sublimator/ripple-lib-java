@@ -135,7 +135,7 @@ public class Hash256 extends Hash<Hash256> {
     static public Hash256Field InvoiceID = hash256Field(Field.InvoiceID);
     static public Hash256Field Nickname = hash256Field(Field.Nickname);
     static public Hash256Field Amendment = hash256Field(Field.Amendment);
-    static public Hash256Field TicketID = hash256Field(Field.TicketID);
+//    static public Hash256Field TicketID = hash256Field(Field.TicketID);
     static public Hash256Field Channel = hash256Field(Field.Channel);
     static public Hash256Field CheckID = hash256Field(Field.CheckID);
     static public Hash256Field Digest = hash256Field(Field.Digest);

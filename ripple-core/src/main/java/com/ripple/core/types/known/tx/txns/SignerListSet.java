@@ -17,4 +17,7 @@ public class SignerListSet extends Transaction {
     public void signerQuorum(UInt32 val) { put(UInt32.SignerQuorum, val);}
     public void signerEntries(STArray val) { put(STArray.SignerEntries, val);}
 
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }

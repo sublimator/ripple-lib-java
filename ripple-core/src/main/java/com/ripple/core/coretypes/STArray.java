@@ -126,4 +126,5 @@ public class STArray extends ArrayList<STObject> implements SerializedType {
     static public STArrayField Majorities = starrayField(Field.Majorities);
     static public STArrayField Memos = starrayField(Field.Memos);
     static public STArrayField ArrayEndMarker = starrayField(Field.ArrayEndMarker);
+    static public STArrayField DisabledValidators = starrayField(Field.DisabledValidators);
 }

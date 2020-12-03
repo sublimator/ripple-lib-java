@@ -13,15 +13,17 @@ public class EscrowFinish extends Transaction {
 
     public boolean hasFulfillment() {return has(Blob.Fulfillment);}
     public boolean hasCondition() {return has(Blob.Condition);}
+    public boolean hasTicketSequence() {return has(UInt32.TicketSequence);}
 
     public UInt32 offerSequence() {return get(UInt32.OfferSequence);}
     public Blob fulfillment() {return get(Blob.Fulfillment);}
     public Blob condition() {return get(Blob.Condition);}
     public AccountID owner() {return get(AccountID.Owner);}
+    public UInt32 ticketSequence() {return get(UInt32.TicketSequence);}
 
     public void offerSequence(UInt32 val) { put(UInt32.OfferSequence, val);}
     public void fulfillment(Blob val) { put(Blob.Fulfillment, val);}
     public void condition(Blob val) { put(Blob.Condition, val);}
     public void owner(AccountID val) { put(AccountID.Owner, val);}
-
+    public void ticketSequence(UInt32 val) { put(UInt32.TicketSequence, val);}
 }
