@@ -13,7 +13,7 @@ dependencies {
     compile 'org.bouncycastle:bcprov-jdk15on:1.68'
     compile 'org.json:json:20201115'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.12.1'
-    testCompile 'junit:junit:4.13.1'
+    testCompile 'junit:junit:4.13.2'
     testCompile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testCompile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt"
 }
