@@ -304,7 +304,7 @@
 		},
 		"telBAD_PUBLIC_KEY" : 
 		{
-			"description" : "Public key too long.",
+			"description" : "Public key is not valid.",
 			"ordinal" : -396
 		},
 		"telCAN_NOT_QUEUE" : 
@@ -526,6 +526,11 @@
 		{
 			"description" : "PathSet with no paths.",
 			"ordinal" : -274
+		},
+		"temSEQ_AND_TICKET" : 
+		{
+			"description" : "Transaction contains a TicketSequence and a non-zero Sequence.",
+			"ordinal" : -263
 		},
 		"temUNCERTAIN" : 
 		{

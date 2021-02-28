@@ -17,7 +17,7 @@ public enum EngineResult implements SerializedType {
     telLOCAL_ERROR(-399, "Local failure."),
     telBAD_DOMAIN("Domain too long."),
     telBAD_PATH_COUNT("Malformed: Too many paths."),
-    telBAD_PUBLIC_KEY("Public key too long."),
+    telBAD_PUBLIC_KEY("Public key is not valid."),
     telFAILED_PROCESSING("Failed to correctly process transaction."),
     telINSUF_FEE_P("Fee insufficient."),
     telNO_DST_PARTIAL("Partial payment to create account not allowed."),
@@ -64,6 +64,7 @@ public enum EngineResult implements SerializedType {
     temINVALID_COUNT("Malformed: Count field outside valid range."),
     temUNCERTAIN("In process of determining result. Never returned."),
     temUNKNOWN("The transaction requires logic that is not implemented yet."),
+    temSEQ_AND_TICKET("Transaction contains a TicketSequence and a non-zero Sequence."),
 
     tefFAILURE(-199, "Failed to apply."),
     tefALREADY("The exact transaction was already in this ledger."),
