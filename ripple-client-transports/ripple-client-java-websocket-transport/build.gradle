@@ -10,7 +10,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile project(':ripple-client')
-    compile 'org.java-websocket:Java-WebSocket:1.5.1'
+    compile 'org.java-websocket:Java-WebSocket:1.5.2'
 
     testCompile 'junit:junit:4.13.2'
     testCompile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
